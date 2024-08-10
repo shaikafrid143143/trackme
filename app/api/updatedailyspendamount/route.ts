@@ -2,7 +2,7 @@ import { DAILY_LIMIT_EXCEED_ERROR, DAILY_SPEND_AMOUNT_PROVIDE_ERROR, EMAIL_ID_PR
 import user from "@/app/models/userModel";
 import { connectUsersDB } from "@/app/mongoDB/users/connectUserDB";
 import { userType } from "@/app/types/userTypes";
-import { daysInThisMonth } from "@/app/utils/utils";
+import { daysInThisMonth, getTodayDate } from "@/app/utils/utils";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
             if (userData) {
                 if (userData?.monthlyLimitAmount > 0) {
                     await user.updateOne({ emailId }, {
-                        $set: { daySpend: amount + userData?.daySpend, savedAmount: userData?.savedAmount - amount }
+                        $set: { daySpend: amount + userData?.daySpend, savedAmount: userData?.savedAmount - amount,todayDate:getTodayDate() }
                     })
                     const daysInMonth = daysInThisMonth()
                     return NextResponse.json({

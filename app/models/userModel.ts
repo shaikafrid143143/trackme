@@ -41,7 +41,7 @@ const userModel = new Schema({
         required:false
     },
     todayDate: {
-        type: String,
+        type: Number,
         required:false
     }
 })
