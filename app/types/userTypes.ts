@@ -7,7 +7,7 @@ export type userType = {
   todayDate: number;
   lastUpdatedDate: number;
   monthLimitAmount: number;
-  todaySpends: [number];
+  todaySpends: number[];
   balance: number;
   totalSpend:number;
   dailyLimit:number;

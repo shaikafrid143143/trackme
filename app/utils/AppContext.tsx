@@ -11,6 +11,8 @@ export type dispatchDataType = {
 type contextType = {
   dispatch: React.Dispatch<dispatchDataType>;
   userData: userType;
+  pageIndex:number;
+  todaySpendAmount:number
 };
 const initState: contextType = {
   dispatch: () => {},
@@ -20,22 +22,28 @@ const initState: contextType = {
     password: "",
     fisrtName: "Shaik",
     lastName: "afrid",
-    monthlyLimitAmount: 3000,
-    daySpend: 0,
-    prevDaySpends: [0],
-    totalMonthSpend: 0,
-    savedAmount: 2500,
-    todayDate: 0,
+    monthLimitAmount:1000,
+    balance:950,
+    dailyLimit:50,
+    lastUpdatedDate:10,
+    todayDate:10,
+    todaySpends:[10,10,5],
+    totalSaved:0,
+    totalSpend:50
   },
+  pageIndex:0,
+  todaySpendAmount:20
+
 };
 
 const contextProvider = createContext(initState);
 
 function reducer(state: contextType, action: dispatchDataType) {
   switch (action?.type) {
-    case "setSelectedMethod":
+    case "setPageIndex":
       return {
         ...state,
+        pageIndex:action?.payload
       };
 
     default:
@@ -44,13 +52,14 @@ function reducer(state: contextType, action: dispatchDataType) {
 }
 
 export default function AppContext({ children }: { children: ReactNode }) {
-  const [{ userData }, dispatch] = useReducer(reducer, initState);
+  const [{ userData,pageIndex,todaySpendAmount }, dispatch] = useReducer(reducer, initState);
 
   return (
     <contextProvider.Provider
       value={{
         dispatch,
         userData,
+        pageIndex,todaySpendAmount
       }}
     >
       {children}
