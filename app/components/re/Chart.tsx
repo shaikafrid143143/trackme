@@ -8,7 +8,7 @@ import {
   TODAY_STATISTICS,
 } from "@/app/utils/constants";
 import { dark } from "@mui/material/styles/createPalette";
-import { BarChart, PieChart } from "@mui/x-charts";
+import { BarChart, pieArcLabelClasses, PieChart } from "@mui/x-charts";
 import { useEffect, useState } from "react";
 
 interface ChartInterface {
@@ -37,7 +37,7 @@ function Chart({ type }: ChartInterface) {
             id: 1,
             value: userData?.dailyLimit,
             label: TODAY_LIMIT,
-            color: "#274fe3",
+            color: "#7600b5",
           },
           {
             id: 2,
@@ -76,8 +76,17 @@ function Chart({ type }: ChartInterface) {
               cx: 120,
               type: "pie",
               arcLabel: (item) => `${item?.value}`,
+              
             },
           ]}
+          sx={{
+            [`& .${pieArcLabelClasses.root}`]: {
+              fill: 'white',
+              fontWeight: 'bold',
+
+              fontSize:"15px"
+            },
+          }}
         />
       </div>
     </div>
