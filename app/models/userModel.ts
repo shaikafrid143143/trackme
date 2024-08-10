@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, models }  from "mongoose";
+import mongoose, { Schema, model, models } from "mongoose";
 
 const userModel = new Schema({
     emailId: {
@@ -27,7 +27,23 @@ const userModel = new Schema({
     daySpend: {
         type: Number,
         required: false,
+    },
+    prevDaySpends: {
+        type: [Number],
+        required:false
+    },
+    totalMonthSpend: {
+        type: Number,
+        required:false
+    },
+    savedAmount: {
+        type: Number,
+        required:false
+    },
+    todayDate: {
+        type: String,
+        required:false
     }
 })
-const user =  models.users || mongoose.model("users", userModel)
+const user = models.users || mongoose.model("users", userModel)
 export default user 

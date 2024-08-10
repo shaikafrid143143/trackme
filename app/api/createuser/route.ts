@@ -1,6 +1,7 @@
 import { EMAIL_ID_PROVIDE_ERROR, MONGO_DB_ERROR, NAME_PROVIDE_NAME, PASSWORD_PROVIDE_ERROR, REQUEST_SUCCESS } from "@/app/errors/errorMessages";
 import user from "@/app/models/userModel";
 import { connectUsersDB } from "@/app/mongoDB/users/connectUserDB";
+import { getTodayDate } from "@/app/utils/utils";
 import { NextResponse } from "next/server";
 
 
@@ -28,7 +29,7 @@ export async function POST(req: Request) {
         try {
             await connectUsersDB()
             await user.create({
-                name, emailId, password, monthlyLimitAmount: 0, daySpent: 0, daySpend: 0
+                name, emailId, password, monthlyLimitAmount: 0, daySpent: 0, daySpend: 0, prevDaySpends: [],totalMonthSpend:0,savedAmount:0,todayDate:getTodayDate()
             })
             return NextResponse.json({
                 message: REQUEST_SUCCESS

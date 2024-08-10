@@ -14,8 +14,9 @@ export async function POST(req: Request) {
         try {
             await connectUsersDB()
             await user.updateOne({ emailId }, {
-                $set: { monthlyLimitAmount: monthAmount }
+                $set: { monthlyLimitAmount: monthAmount, savedAmount: monthAmount }
             })
+
             return NextResponse.json({
                 message: REQUEST_SUCCESS
             })
