@@ -15,24 +15,30 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const { emailId } = await req.json();
 
-  if (emailId) {  
+  if (emailId) {
     try {
       await connectUsersDB();
       const userData: userType | null = await user.findOne({ emailId });
       if (userData) {
-        if (userData?.monthlyLimitAmount) {
-          if (userData?.todayDate.toString() !== getTodayDate().toString()) {
+        if (userData?.monthLimitAmount) {
+          if (userData?.lastUpdatedDate !== getTodayDate()) {
+            let totalSpend = 0;
+            for (
+              let index = 0;
+              index < userData?.todaySpends?.length;
+              index++
+            ) {
+              totalSpend = totalSpend + userData?.todaySpends[index];
+            }
             await user.updateOne(
               { emailId },
               {
-                $push: {
-                  prevDaySpends: userData?.daySpend,
-                },
                 $set: {
-                  daySpend: 0,
                   todayDate: getTodayDate(),
-                  totalMonthSpend:
-                    userData?.daySpend + userData?.totalMonthSpend,
+                  lastUpdatedDate: getTodayDate(),
+                  totalSpend,
+                  todaySpends: [],
+                  totalSaved:userData?.dailyLimit - totalSpend
                 },
               }
             );

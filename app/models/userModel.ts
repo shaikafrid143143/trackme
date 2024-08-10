@@ -1,49 +1,37 @@
 import mongoose, { Schema, model, models } from "mongoose";
 
 const userModel = new Schema({
-    emailId: {
-        type: String,
-        immutable: true,
-        required: true
-    },
-    mobileNumber: {
-        length: 10,
-        type: Number,
-        required: false
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        immutable: true,
-        required: true
-    },
-    monthlyLimitAmount: {
-        type: Number,
-        required: false,
-    },
-    daySpend: {
-        type: Number,
-        required: false,
-    },
-    prevDaySpends: {
-        type: [Number],
-        required:false
-    },
-    totalMonthSpend: {
-        type: Number,
-        required:false
-    },
-    savedAmount: {
-        type: Number,
-        required:false
-    },
-    todayDate: {
-        type: Number,
-        required:false
-    }
-})
-const user = models.users || mongoose.model("users", userModel)
-export default user 
+  emailId: {
+    type: String,
+    immutable: true,
+    required: true,
+  },
+  mobileNumber: {
+    length: 10,
+    type: Number,
+    required: false,
+  },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: false,
+  },
+  password: {
+    type: String,
+    immutable: true,
+    required: true,
+  },
+  todayDate: Number,
+  lastUpdatedDate: Number,
+  monthLimitAmount: Number,
+  todaySpends: [Number],
+  balance: Number,
+  totalSpend:Number,
+  dailyLimit:Number,
+  totalSaved:Number
+});
+const user = models.users || mongoose.model("users", userModel);
+export default user;

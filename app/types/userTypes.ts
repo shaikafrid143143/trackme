@@ -2,11 +2,14 @@ export type userType = {
   emailId: string;
   mobilenumber: number;
   password: string;
-  name: string;
-  monthlyLimitAmount: number;
-  daySpend: number;
-  prevDaySpends: [number];
-  totalMonthSpend: number;
-  savedAmount: number;
+  fisrtName: string;
+  lastName?: string;
   todayDate: number;
+  lastUpdatedDate: number;
+  monthLimitAmount: number;
+  todaySpends: [number];
+  balance: number;
+  totalSpend:number;
+  dailyLimit:number;
+  totalSaved:number
 };
