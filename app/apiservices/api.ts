@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:3000";
 
-function usePostAPI(url: string, data: any) {
+function postAPI(url: string, data: any) {
   return axios(`http://localhost:3000/api/${url}`, {
     method: "POST",
     data,
@@ -16,5 +16,5 @@ export function imageUplaodAPI(key: string, body: FormData) {
   });
 }
 export function updateProfileImageAPI(data: { emailId: string; url: string }) {
-  return usePostAPI("uploadprofileimage", data);
+  return postAPI("uploadprofileimage", data);
 }
