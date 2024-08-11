@@ -2,12 +2,11 @@
 
 import { useAppContext } from "@/app/utils/AppContext";
 import { HELLO, LIMIT, SPENDS } from "@/app/utils/constants";
-import { daysInThisMonth, getTodayDate } from "@/app/utils/utils";
-import { BiUser } from "react-icons/bi";
 import { IoMdArrowDropup } from "react-icons/io";
 import { PiCurrencyInr } from "react-icons/pi";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useState } from "react";
+import ProfileIcon from "./ProfileIcon";
 
 interface NavBarInterface {
   setPageNumber: (pageNumber: number) => void;
@@ -30,9 +29,7 @@ function NavBar({ setPageNumber }: NavBarInterface) {
   return (
     <nav>
       <ul className="flex w-full justify-between items-center">
-        <a>
-          <BiUser className="border border-purple-900 bg-purple-50 rounded-md p-2  h-12 w-12 shadow-lg" />
-        </a>
+        <ProfileIcon />
         <label className="text-lg font-mono flex items-center text-black gap-[0.15rem]">
           {HELLO}
           <span className="text-purple-900 font-semibold tracking-wider">

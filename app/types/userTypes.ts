@@ -12,4 +12,5 @@ export type userType = {
   totalSpend:number;
   dailyLimit:number;
   totalSaved:number
+  imageUrl:string
 };

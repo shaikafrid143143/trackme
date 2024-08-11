@@ -29,7 +29,8 @@ const initState: contextType = {
     todayDate:10,
     todaySpends:[10,10,5],
     totalSaved:0,
-    totalSpend:50
+    totalSpend:50,
+    imageUrl:""
   },
   pageIndex:0,
   todaySpendAmount:100

@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, models } from "mongoose";
+import mongoose, { Schema, models } from "mongoose";
 
 const userModel = new Schema({
   emailId: {
@@ -31,7 +31,8 @@ const userModel = new Schema({
   balance: Number,
   totalSpend:Number,
   dailyLimit:Number,
-  totalSaved:Number
+  totalSaved:Number,
+  imageUrl:String
 });
 const user = models.users || mongoose.model("users", userModel);
 export default user;

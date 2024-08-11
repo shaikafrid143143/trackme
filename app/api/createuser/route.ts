@@ -44,7 +44,8 @@ export async function POST(req: Request) {
           balance: 0,
           totalSpend: 0,
           dailyLimit:0,
-          totalSaved:0
+          totalSaved:0,
+          imageUrl:""
         });
         return NextResponse.json({
           message: REQUEST_SUCCESS,

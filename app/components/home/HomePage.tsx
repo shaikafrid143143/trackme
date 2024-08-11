@@ -23,7 +23,7 @@ function HomePage({ setPageNumber }: HomePageInterface) {
       <div className=" p-1">
         <NavBar setPageNumber={setPageNumber} />
       </div>
-      <div className="mt-5 w-[50vw]">
+      <div className="mt-5 w-fit">
         <label className="flex items-center gap-2 font-semibold shadow-lg drop-shadow-xl px-4 py-1 rounded-md border border-black">
           {TODAY_STATISTICS}{" "}
           {minimizedSpends ? (
