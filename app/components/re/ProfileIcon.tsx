@@ -1,11 +1,13 @@
 import { useProfileImageUplaod } from "@/app/hooks/appHooks";
+import Loading from "@/app/utils/Loading";
 import { useEffect, useState } from "react";
 import { BiUser } from "react-icons/bi";
 
 interface ProfileIconInerface {}
 
 function ProfileIcon({}: ProfileIconInerface) {
-  const { isPending, uplaodFile, data } = useProfileImageUplaod();
+  const { isPending, uplaodFile, data, updatingImageUrl } =
+    useProfileImageUplaod();
   const [imageUrl, setImageUrl] = useState<string | undefined>();
 
   useEffect(() => {
@@ -25,6 +27,7 @@ function ProfileIcon({}: ProfileIconInerface) {
   function handleProfileClick() {
     document?.getElementById("FILE")?.click();
   }
+  if (isPending || updatingImageUrl) return <Loading />;
 
   return (
     <div className="relative">
@@ -36,7 +39,10 @@ function ProfileIcon({}: ProfileIconInerface) {
           {!imageUrl ? (
             <BiUser className="w-full h-full p-2" />
           ) : (
-            <img src={imageUrl} className="w-full h-full object-fill rounded-full" />
+            <img
+              src={imageUrl}
+              className="w-full h-full object-fill rounded-full"
+            />
           )}
         </div>
         <input

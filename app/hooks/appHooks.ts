@@ -16,7 +16,7 @@ export function useProfileImageUplaod() {
       updateImageUrl({ url: data?.data?.data?.display_url });
     },
   });
-  return { isPending, data, isSuccess, uplaodFile, updateImageUrl };
+  return { isPending, data, isSuccess, uplaodFile, updatingImageUrl };
 }
 
 function useUpdateProofileImage() {
