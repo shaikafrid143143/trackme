@@ -32,7 +32,7 @@ const initState: contextType = {
     totalSpend:50
   },
   pageIndex:0,
-  todaySpendAmount:20
+  todaySpendAmount:100
 
 };
 

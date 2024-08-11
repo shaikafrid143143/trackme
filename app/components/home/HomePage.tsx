@@ -23,8 +23,7 @@ function HomePage({ setPageNumber }: HomePageInterface) {
       <div className=" p-1">
         <NavBar setPageNumber={setPageNumber} />
       </div>
-      <div className="mt-5 flex flex-col items-center justify-center gap-6">
-        <Chart type="PIE" />
+      <div className="mt-5 w-[50vw]">
         <label className="flex items-center gap-2 font-semibold shadow-lg drop-shadow-xl px-4 py-1 rounded-md border border-black">
           {TODAY_STATISTICS}{" "}
           {minimizedSpends ? (
@@ -34,16 +33,19 @@ function HomePage({ setPageNumber }: HomePageInterface) {
           )}
         </label>
       </div>
-      <div className="mt-5 flex items-center justify-evenly gap-4">
+      <div className="mt-5 flex flex-col items-center justify-center gap-6">
+        <Chart type="PIE" />
+      </div>
+      <div className=" flex items-center justify-evenly gap-4">
         <div className=" relative">
-          <PiCurrencyInrBold className="w-4 left-1 h-4 text-zinc-400 absolute top-3"/>
+          <PiCurrencyInrBold className="w-4 left-1 h-4 text-zinc-400 absolute top-3" />
           <input
             placeholder={SPEND_AMOUNT}
             className="shadow-lg outline-none border-none py-2 pl-6 w-[50vw] rounded-md hover:shadow-2xl"
             type="text"
           />
         </div>
-        <button className="rounded-md shadow-xl font-semibold bg-purple-800 flex items-center text-white py-2 px-6 gap-2 hover:scale-105  ">
+        <button className="rounded-md shadow-xl font-semibold bg-purple-800 flex items-center text-white py-2 px-6 gap-2 hover:shadow-2xl  hover:scale-105  ">
           {UPDATE}
           <CiSaveUp1 className="w-7 h-7 " />
         </button>

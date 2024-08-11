@@ -6,3 +6,5 @@ export const TODAY_STATISTICS = "Today Statistics";
 export const SAVINGS = "Savings";
 export const SPEND_AMOUNT = "Spend Amount"
 export const UPDATE = "Update"
+export const SPENDS = "Spends"
+export const LIMIT = "Limit"

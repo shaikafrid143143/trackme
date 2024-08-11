@@ -34,20 +34,20 @@ function Chart({ type }: ChartInterface) {
       case 0: {
         setPieData([
           {
-            id: 1,
+            id: 0,
             value: userData?.dailyLimit,
             label: TODAY_LIMIT,
             color: "#7600b5",
           },
           {
-            id: 2,
+            id:1,
             value: todaySpendAmount,
             label: TODAY_SPENDS,
-            color: "#f7746a",
+            color: "#55f540",
           },
           {
-            id: 2,
-            value: userData?.dailyLimit - todaySpendAmount,
+            id:2,
+            value: (userData?.dailyLimit - todaySpendAmount) >= 0?(userData?.dailyLimit - todaySpendAmount):(userData?.dailyLimit - todaySpendAmount) * -1,
             label: SAVINGS,
             color:
               todaySpendAmount >= userData?.dailyLimit ? "#f7746a" : "#55f540",
@@ -75,7 +75,13 @@ function Chart({ type }: ChartInterface) {
               cornerRadius: 15,
               cx: 120,
               type: "pie",
-              arcLabel: (item) => `${item?.value}`,
+              arcLabel: (item) => {
+                if(item?.id === 2 && (userData?.dailyLimit - todaySpendAmount) < 0){
+                   return `- ${item?.value}`
+                }
+                return `+ ${item?.value}`
+              },
+
               
             },
           ]}
