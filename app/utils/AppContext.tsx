@@ -21,7 +21,7 @@ const initState: contextType = {
     emailId: "",
     mobilenumber: 0,
     password: "",
-    fisrtName: "Shaik",
+    firstName: "Shaik",
     lastName: "afrid",
     monthLimitAmount: 1000,
     balance: 950,
@@ -56,6 +56,11 @@ function reducer(state: contextType, action: dispatchDataType) {
       return{
         ...state,
         userData:action?.payload
+      }
+    case "setTodaySpendAmount":
+      return {
+        ...state,
+        todaySpendAmount:action?.payload
       }
 
 

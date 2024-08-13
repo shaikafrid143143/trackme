@@ -25,7 +25,6 @@ function NavBar({ setPageNumber }: NavBarInterface) {
       stePrevAmount(value);
     }
   }
-  console.log(userData)
 
   return (
     <nav>

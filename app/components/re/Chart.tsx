@@ -27,7 +27,7 @@ function Chart({ type }: ChartInterface) {
 
   useEffect(() => {
     handlePageIndexChange();
-  }, [pageIndex]);
+  }, [pageIndex,userData]);
 
   function handlePageIndexChange() {
     switch (pageIndex) {
