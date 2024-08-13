@@ -1,10 +1,13 @@
-import { SET_MONTHLY_AMOUNT, SPEND_AMOUNT, UPDATE } from "@/app/utils/constants";
+import { SET_MONTHLY_AMOUNT, UPDATE } from "@/app/utils/constants";
 import { CiSaveUp1 } from "react-icons/ci";
 import { PiCurrencyInrBold } from "react-icons/pi";
 
 function SetMonthLimit() {
   return (
     <div>
+      <div>
+        <img src="setMonthlyAmount.jpg" />
+      </div>
       <div className=" flex items-center justify-evenly gap-4">
         <div className=" relative">
           <PiCurrencyInrBold className="w-4 left-1 h-4 text-zinc-400 absolute top-3" />
