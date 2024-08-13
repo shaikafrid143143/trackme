@@ -8,7 +8,7 @@ export function getTodayDate(): number{
   
 }
 export function useGetMe(){
-  const emailId = "369afrid@gmail.com"
+  const emailId = "369afrd@gmail.com"
   return {emailId}
 
 }

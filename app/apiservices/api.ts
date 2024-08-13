@@ -18,3 +18,6 @@ export function imageUplaodAPI(key: string, body: FormData) {
 export function updateProfileImageAPI(data: { emailId: string; url: string }) {
   return postAPI("uploadprofileimage", data);
 }
+export function getUserDataAPI(emailId: string) {
+  return postAPI("getuser", { emailId })
+}

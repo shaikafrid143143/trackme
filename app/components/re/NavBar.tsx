@@ -25,6 +25,7 @@ function NavBar({ setPageNumber }: NavBarInterface) {
       stePrevAmount(value);
     }
   }
+  console.log(userData)
 
   return (
     <nav>
@@ -33,7 +34,7 @@ function NavBar({ setPageNumber }: NavBarInterface) {
         <label className="text-lg font-mono flex items-center text-black gap-[0.15rem]">
           {HELLO}
           <span className="text-purple-900 font-semibold tracking-wider">
-            {userData?.fisrtName}
+            {userData?.firstName}
           </span>
         </label>
         <div

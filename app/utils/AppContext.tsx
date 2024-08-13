@@ -11,30 +11,31 @@ export type dispatchDataType = {
 type contextType = {
   dispatch: React.Dispatch<dispatchDataType>;
   userData: userType;
-  pageIndex:number;
-  todaySpendAmount:number
+  pageIndex: number;
+  todaySpendAmount: number
+  isLoading: boolean
 };
 const initState: contextType = {
-  dispatch: () => {},
+  dispatch: () => { },
   userData: {
     emailId: "",
     mobilenumber: 0,
     password: "",
     fisrtName: "Shaik",
     lastName: "afrid",
-    monthLimitAmount:1000,
-    balance:950,
-    dailyLimit:50,
-    lastUpdatedDate:10,
-    todayDate:10,
-    todaySpends:[10,10,5],
-    totalSaved:0,
-    totalSpend:50,
-    imageUrl:""
+    monthLimitAmount: 1000,
+    balance: 950,
+    dailyLimit: 50,
+    lastUpdatedDate: 10,
+    todayDate: 10,
+    todaySpends: [10, 10, 5],
+    totalSaved: 0,
+    totalSpend: 50,
+    imageUrl: ""
   },
-  pageIndex:0,
-  todaySpendAmount:100
-
+  pageIndex: 0,
+  todaySpendAmount: 100,
+  isLoading: false
 };
 
 const contextProvider = createContext(initState);
@@ -44,8 +45,19 @@ function reducer(state: contextType, action: dispatchDataType) {
     case "setPageIndex":
       return {
         ...state,
-        pageIndex:action?.payload
+        pageIndex: action?.payload
       };
+    case "setIsLoading":
+      return {
+        ...state,
+        isLoading: action?.payload
+      }
+    case "setUser":
+      return{
+        ...state,
+        userData:action?.payload
+      }
+
 
     default:
       throw new Error("Action unkonwn");
@@ -53,14 +65,14 @@ function reducer(state: contextType, action: dispatchDataType) {
 }
 
 export default function AppContext({ children }: { children: ReactNode }) {
-  const [{ userData,pageIndex,todaySpendAmount }, dispatch] = useReducer(reducer, initState);
+  const [{ userData, pageIndex, todaySpendAmount, isLoading }, dispatch] = useReducer(reducer, initState);
 
   return (
     <contextProvider.Provider
       value={{
         dispatch,
         userData,
-        pageIndex,todaySpendAmount
+        pageIndex, todaySpendAmount, isLoading
       }}
     >
       {children}

@@ -8,6 +8,9 @@ import { useAppContext } from "@/app/utils/AppContext";
 import { daysInThisMonth, getTodayDate } from "@/app/utils/utils";
 import { CiSaveUp1 } from "react-icons/ci";
 import { PiCurrencyInrBold } from "react-icons/pi";
+import { useGetAndSetUserData } from "@/app/hooks/userHooks";
+import { useEffect } from "react";
+import Spinner from "@/app/utils/Spinner";
 
 interface HomePageInterface {
   setPageNumber: (pageNumber: number) => void;
@@ -18,8 +21,17 @@ function HomePage({ setPageNumber }: HomePageInterface) {
   const minimizedSpends =
     (userData?.monthLimitAmount / daysInThisMonth()) * getTodayDate() >
     todaySpendAmount;
+  const { data, getUserData, isPending } = useGetAndSetUserData();
+
+  useEffect(() => {
+    getUserData({
+      emailId: "369afrd@gmail.com",
+    });
+  }, []);
+
   return (
     <div className="px-2 py-2">
+      <Spinner loadingState={isPending} />
       <div className=" p-1">
         <NavBar setPageNumber={setPageNumber} />
       </div>

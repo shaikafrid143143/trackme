@@ -1,20 +1,16 @@
-import { useProfileImageUplaod } from "@/app/hooks/appHooks";
-import Loading from "@/app/utils/Loading";
-import { useEffect, useState } from "react";
+import { useProfileImageUplaod, useSetLoading } from "@/app/hooks/appHooks";
+import { useAppContext } from "@/app/utils/AppContext";
+import Spinner from "@/app/utils/Spinner";
 import { BiUser } from "react-icons/bi";
 
-interface ProfileIconInerface {}
+interface ProfileIconInerface { }
 
-function ProfileIcon({}: ProfileIconInerface) {
-  const { isPending, uplaodFile, data, updatingImageUrl } =
+function ProfileIcon({ }: ProfileIconInerface) {
+  const { isPending, uplaodFile, updatingImageUrl, settingUser } =
     useProfileImageUplaod();
-  const [imageUrl, setImageUrl] = useState<string | undefined>();
+  const { userData } = useAppContext()
 
-  useEffect(() => {
-    if (data?.data) {
-      setImageUrl(data?.data?.data?.display_url);
-    }
-  }, [data]);
+
 
   function handleFileChange(file: File) {
     const formData = new FormData();
@@ -27,20 +23,23 @@ function ProfileIcon({}: ProfileIconInerface) {
   function handleProfileClick() {
     document?.getElementById("FILE")?.click();
   }
-  if (isPending || updatingImageUrl) return <Loading />;
+  console.log(userData)
+
+
 
   return (
     <div className="relative">
+      <Spinner loadingState={isPending || updatingImageUrl || settingUser} />
       <div onClick={handleProfileClick}>
         <div
           className="border border-purple-900 bg-purple-50
            rounded-full h-12 w-12 shadow-lg"
         >
-          {!imageUrl ? (
+          {!userData?.imageUrl ? (
             <BiUser className="w-full h-full p-2" />
           ) : (
             <img
-              src={imageUrl}
+              src={userData?.imageUrl}
               className="w-full h-full object-fill rounded-full"
             />
           )}
