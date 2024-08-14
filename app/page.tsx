@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <QueryClientProvider client={queryClient}>
         {(isLoading ) && <Loading />}
-        <main className="relative font-mono">
+        <div className="relative font-mono">
           <div className="absolute  z-[1] h-[100vh] w-[100vw] ">
             <img src="beams.jpg" className="w-full h-full object-cover" />
           </div>
@@ -30,7 +30,7 @@ export default function Home() {
           <div className="z-[2]  relative top-1  w-[100vw]">
             <HomePage setPageNumber={handlePageIndexChange} />
           </div>
-        </main>
+        </div>
     </QueryClientProvider>
   );
 }

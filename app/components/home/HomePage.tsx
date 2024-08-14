@@ -31,12 +31,14 @@ function HomePage({ setPageNumber }: HomePageInterface) {
   }, []);
 
   return (
-    <div className="px-2 py-2">
+    <div className="px-2 py-2 ">
       <Spinner loadingState={isPending} />
       <div className=" p-1">
         <NavBar setPageNumber={setPageNumber} />
       </div>
-      {userData?.monthLimitAmount < 500 && <SetMonthLimit />}
+      <div className="h-full flex items-center justify-center min-h-[80vh]">
+        {userData?.monthLimitAmount < 500 && <SetMonthLimit />}
+      </div>
       {userData?.monthLimitAmount >= 500 && (
         <div className="flex flex-col w-full">
           <div className="mt-5 w-fit">
@@ -53,12 +55,12 @@ function HomePage({ setPageNumber }: HomePageInterface) {
             <Chart type="PIE" />
           </div>
           <div className=" flex items-center justify-evenly gap-4">
-            <div className=" relative">
+            <div className="relative">
               <PiCurrencyInrBold className="w-4 left-1 h-4 text-zinc-400 absolute top-3" />
               <input
                 placeholder={SPEND_AMOUNT}
                 className="shadow-lg outline-none border-none py-2 pl-6 w-[50vw] rounded-md hover:shadow-2xl"
-                type="text"
+                type="number"
               />
             </div>
             <button className="rounded-md shadow-xl font-semibold bg-purple-800 flex items-center text-white py-2 px-6 gap-2 hover:shadow-2xl  hover:scale-105  ">
